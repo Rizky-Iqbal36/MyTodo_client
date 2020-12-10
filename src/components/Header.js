@@ -40,7 +40,7 @@ const Header = () => {
             }}
           >
             <img
-              src={urlAsset.avatar + state.user?.avatar}
+              src={urlAsset.photo + state.user?.avatar}
               style={{
                 height: 50,
                 width: 50,

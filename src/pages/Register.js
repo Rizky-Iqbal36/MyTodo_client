@@ -20,7 +20,7 @@ const Register = (props) => {
       phone: "",
       address: "",
       isAdmin: false,
-      avatar: "default.png",
+      avatar: "MyTodo_Project/avatars/default.png",
     },
     validationSchema: Yup.object({
       email: Yup.string()

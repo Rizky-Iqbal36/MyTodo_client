@@ -6,15 +6,15 @@ export const setAuthToken = (token) => {
 };
 export const urlAsset = {
   //dev
-  avatar: "http://localhost:5000/public/avatars/",
-  thumbnailParentCard: "http://localhost:5000/public/thumbnailParentCards/",
-  thumbnailChildCard: "http://localhost:5000/public/thumbnailChildCards/",
+  // avatar: "http://localhost:5000/public/avatars/",
+  // thumbnailParentCard: "http://localhost:5000/public/thumbnailParentCards/",
+  // thumbnailChildCard: "http://localhost:5000/public/thumbnailChildCards/",
   //production
   photo: "https://res.cloudinary.com/rizkyiqbal/",
 };
 export const API = axios.create({
   //dev
-  baseURL: "http://localhost:5000/api/v1",
+  // baseURL: "http://localhost:5000/api/v1",
   //production
-  //baseURL: "https://mytodo-be.herokuapp.com/api/v1",
+  baseURL: "https://mytodo-be.herokuapp.com/api/v1",
 });

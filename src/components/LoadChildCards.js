@@ -31,11 +31,11 @@ const LoadChildCards = (props) => {
       try {
         setLoading(true);
         const res = await API.get("/childCards");
-        setInit(res.data.data.loadChildCards);
-        setChildCards(init.filter((e) => e.parentId == props.id));
-        setTodo(childCards.filter((e) => e.status == "todo"));
-        setDoing(childCards.filter((e) => e.status == "doing"));
-        setDone(childCards.filter((e) => e.status == "done"));
+        await setInit(res.data.data.loadChildCards);
+        await setChildCards(init.filter((e) => e.parentId === props.id));
+        await setTodo(childCards.filter((e) => e.status === "todo"));
+        await setDoing(childCards.filter((e) => e.status === "doing"));
+        await setDone(childCards.filter((e) => e.status === "done"));
         dispatch({
           type: "CARD_REFRESHED",
         });
@@ -47,7 +47,10 @@ const LoadChildCards = (props) => {
     };
     loadParentCards();
   }, [state.refreshCard]);
-  // console.log(init.filter((e) => e.parentId == props.id));
+  if (!loading) {
+    console.log(init.filter((e) => e.parentId === props.id));
+    // console.log({ todo, doing, done });
+  }
   return (
     <div className="container-fluid">
       <div style={{ paddingTop: 24 }}>
@@ -87,22 +90,11 @@ const LoadChildCards = (props) => {
           />
         </div>
         {loading || !childCards ? (
-          <PageLoading />
-        ) : childCards?.length === 0 ? (
-          <ContentCenter>
-            <ContentColumn>
-              <AiFillWarning size={72} />
-              <h3
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  alignContent: "center",
-                }}
-              >
-                Add your activities
-              </h3>
-            </ContentColumn>
-          </ContentCenter>
+          <div style={{ paddingTop: 100 }}>
+            <ContentCenter>
+              <PageLoading />
+            </ContentCenter>
+          </div>
         ) : (
           <>
             <div className="row d-flex justify-content-around">
@@ -162,6 +154,8 @@ const LoadChildCards = (props) => {
                                 show={showEdit}
                                 onHide={() => setShowEdit(false)}
                                 childCardId={childCardId}
+                                title={item.title}
+                                description={item.description}
                               />
                             ) : null}
                           </div>
@@ -227,6 +221,8 @@ const LoadChildCards = (props) => {
                                 show={showEdit}
                                 onHide={() => setShowEdit(false)}
                                 childCardId={childCardId}
+                                title={item.title}
+                                description={item.description}
                               />
                             ) : null}
                           </div>
@@ -292,6 +288,8 @@ const LoadChildCards = (props) => {
                                 show={showEdit}
                                 onHide={() => setShowEdit(false)}
                                 childCardId={childCardId}
+                                title={item.title}
+                                description={item.description}
                               />
                             ) : null}
                           </div>

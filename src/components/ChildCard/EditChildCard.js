@@ -18,14 +18,7 @@ const EditChildCard = (props) => {
   const [showAlert, setShowAlert] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [loadingChange, setLoadingChange] = useState(false);
-  // const [changedContent, setChangedContent] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
 
-  // useEffect(() => {
-  //   setChangedContent({ title, description });
-  //   console.log(changedContent);
-  // }, [title, description]);
   const [onDelete] = useMutation(async () => {
     try {
       setLoadingDelete(true);
@@ -41,8 +34,8 @@ const EditChildCard = (props) => {
   });
   const { handleSubmit, getFieldProps, errors, touched } = useFormik({
     initialValues: {
-      title: "",
-      description: "",
+      title: props.title,
+      description: props.description,
       status: "doing",
     },
     validationSchema: Yup.object({
@@ -106,7 +99,8 @@ const EditChildCard = (props) => {
             <Form.Group>
               <Form.Label>Change description :</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                rows="3"
                 placeholder="Change description"
                 name="description"
                 {...getFieldProps("description")}

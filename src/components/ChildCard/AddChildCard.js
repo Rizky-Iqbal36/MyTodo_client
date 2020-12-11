@@ -31,7 +31,6 @@ const AddChildCard = (props) => {
       description: Yup.string(),
     }),
     onSubmit: (values) => {
-      console.log(values);
       storeNewChildCard(values);
       resetForm("");
       props.show(false);

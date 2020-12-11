@@ -14,7 +14,7 @@ export const urlAsset = {
 };
 export const API = axios.create({
   //dev
-  // baseURL: "http://localhost:5000/api/v1",
+  baseURL: "http://localhost:5000/api/v1",
   //production
-  baseURL: "https://mytodo-be.herokuapp.com/api/v1",
+  //baseURL: "https://mytodo-be.herokuapp.com/api/v1",
 });

@@ -151,6 +151,8 @@ const LoadParentCards = () => {
                             show={showEdit}
                             onHide={() => setShowEdit(false)}
                             parentCardId={parentCardId}
+                            title={item.title}
+                            description={item.description}
                           />
                         ) : null}
                       </div>

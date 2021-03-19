@@ -20,8 +20,8 @@ const EditParentCard = (props) => {
   const [loadingDelete, setLoadingDelete] = useState(false);
   const [loadingChange, setLoadingChange] = useState(false);
   // const [changedContent, setChangedContent] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(props.title);
+  const [description, setDescription] = useState(props.description);
 
   // useEffect(() => {
   //   setChangedContent({ title, description });
@@ -72,8 +72,8 @@ const EditParentCard = (props) => {
   });
   const { handleSubmit, getFieldProps, errors, touched } = useFormik({
     initialValues: {
-      title: "",
-      description: "",
+      title: title,
+      description: description,
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title required"),
@@ -160,8 +160,14 @@ const EditParentCard = (props) => {
                 type="text"
                 placeholder="Change title"
                 name="title"
+                value={title}
                 {...getFieldProps("title")}
               />
+              <Form.Text className="text-muted">
+                {touched.title && errors.title ? (
+                  <p style={{ color: "red" }}>{errors.title}</p>
+                ) : null}
+              </Form.Text>
             </Form.Group>
             <Form.Group>
               <Form.Label>Change description :</Form.Label>
@@ -170,6 +176,7 @@ const EditParentCard = (props) => {
                 rows="3"
                 placeholder="Change description"
                 name="description"
+                value={description}
                 {...getFieldProps("description")}
               />
             </Form.Group>

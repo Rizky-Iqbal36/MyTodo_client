@@ -166,7 +166,8 @@ const EditParentCard = (props) => {
             <Form.Group>
               <Form.Label>Change description :</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
+                rows="3"
                 placeholder="Change description"
                 name="description"
                 {...getFieldProps("description")}
